@@ -21,7 +21,7 @@ const useClick = (onClick) => {
   return element;
 };
 
-const App = () => {
+const useClicks = () => {
   const sayHello = () => console.log("say hello");
   const title = useClick(sayHello); //title을 useClick으로 ref하고 title은 p를 ref함 즉 useClick -> title -> p, sayHello함수를 onClick함수로 넣어줌
   return (
@@ -31,4 +31,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default useClicks;
