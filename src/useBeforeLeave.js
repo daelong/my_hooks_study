@@ -1,5 +1,3 @@
-import React, { useState, useEffect, useRef } from "react";
-
 const useBeforeLeave = (onBefore) => {
   const handle = (event) => {
     const { clientY } = event;
@@ -12,14 +10,3 @@ const useBeforeLeave = (onBefore) => {
     return () => document.removeEventListener("mouseleave", handle); //componentWillUnmount일때
   }, []);
 };
-const App = () => {
-  const begForLife = () => console.log("Pls dont leave");
-  useBeforeLeave(begForLife);
-  return (
-    <div>
-      <div>hello</div>
-    </div>
-  );
-};
-
-export default App;
