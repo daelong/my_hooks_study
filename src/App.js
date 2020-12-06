@@ -1,23 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
+import useAxios from "./useAxios";
 
-const useBeforeLeave = (onBefore) => {
-  const handle = (event) => {
-    const { clientY } = event;
-    if (clientY <= 0) {
-      onBefore();
-    }
-  };
-  useEffect(() => {
-    document.addEventListener("mouseleave", handle);
-    return () => document.removeEventListener("mouseleave", handle); //componentWillUnmount일때
-  }, []);
-};
 const App = () => {
-  const begForLife = () => console.log("Pls dont leave");
-  useBeforeLeave(begForLife);
+  const { loading, data, error, refetch } = useAxios({
+    url: "https://yts.am/api/v2/list_moives.json",
+  });
   return (
-    <div>
-      <div>hello</div>
+    <div className="App">
+      <h1>{data && data.status}</h1>
+      <h2>{loading && "Loading"}</h2>
+      <button onClick={refetch}>Refetch</button>
     </div>
   );
 };
